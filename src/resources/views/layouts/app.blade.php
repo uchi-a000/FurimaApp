@@ -13,6 +13,7 @@
 <body>
     <header class="header">
         <h1 class="header-ttl"></h1>
+        @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
             <form class="search-form" action="">
                 <input class="input" type="text" name="keyword" placeholder="何をお探しですが？" value="">
@@ -21,8 +22,8 @@
         @guest
         <nav class="header-nav">
             <ul class="header-nav-list">
-                <li class="header-nav-item"><a href="/register">ログイン</a></li>
-                <li class="header-nav-item"><a href="/login">会員登録</a></li>
+                <li class="header-nav-item"><a href="/login">ログイン</a></li>
+                <li class="header-nav-item"><a href="/register">会員登録</a></li>
             </ul>
         </nav>
         @else
@@ -39,7 +40,7 @@
         </nav>
         @endguest
         <a class="sell__link" href="">出品</a>
-
+        @endif
     </header>
 
 

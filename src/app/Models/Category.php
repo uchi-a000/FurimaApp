@@ -13,9 +13,8 @@ class Category extends Model
         'name'
     ];
 
-
-    public function category_items()
+    public function items()
     {
-        return $this->belongsToMany(Item::class, 'category_items', 'category_id', 'item_id');
+        return $this->belongsToMany(Item::class, 'category_item');
     }
 }

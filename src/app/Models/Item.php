@@ -11,7 +11,6 @@ class Item extends Model
 
     protected $fillable = [
         'user_id',
-        'category_id',
         'condition_id',
         'name',
         'price',
@@ -29,9 +28,9 @@ class Item extends Model
         return $this->belongsTo(Condition::class);
     }
 
-    public function category_items()
+    public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_items', 'item_id','category_id');
+        return $this->belongsToMany(Category::class, 'category_item');
     }
 
     public function favorites()

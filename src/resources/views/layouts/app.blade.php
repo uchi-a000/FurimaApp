@@ -12,11 +12,12 @@
 
 <body>
     <header class="header">
+        @if(!Request::is('sell'))
         <h1 class="header-ttl"></h1>
         @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
             <form class="search-form" action="">
-                <input class="input" type="text" name="keyword" placeholder="何をお探しですが？" value="">
+                <input class="search-input" type="text" name="keyword" placeholder="何をお探しですが？" value="">
             </form>
         </div>
         @guest
@@ -39,7 +40,8 @@
             @endif
         </nav>
         @endguest
-        <a class="sell__link" href="">出品</a>
+        <a class="sell__link" href="/sell">出品</a>
+        @endif
         @endif
     </header>
 

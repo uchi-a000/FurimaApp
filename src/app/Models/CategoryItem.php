@@ -9,17 +9,19 @@ class CategoryItem extends Model
 {
     use HasFactory;
 
+    protected $table = 'category_item';
+
     protected $fillable = [
         'category_id',
         'item_id'
     ];
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function items()
+    public function item()
     {
         return $this->belongsTo(Item::class);
     }

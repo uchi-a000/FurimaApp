@@ -18,6 +18,7 @@ use App\Http\Controllers\SellController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/detail/{item_id}', [HomeController::class, 'itemDetail'])->name('item_detail');
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
@@ -27,6 +28,6 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/sell', [HomeController::class, 'sell'])->name('sell');
+    Route::get('/sell', [SellController::class, 'sell'])->name('sell');
     Route::post('/sell', [SellController::class, 'store']);
 });

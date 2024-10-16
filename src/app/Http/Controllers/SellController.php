@@ -4,20 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Category;
+use App\Models\Condition;
+use Illuminate\Support\Facades\Auth;
 
 class SellController extends Controller
 {
+
+
+    public function sell(Request $request)
+    {
+        $user = Auth::user();
+        $items = Item::where('user_id', $user->id)->get();
+        $categories = Category::all();
+        $conditions = Condition::all();
+
+        return view('sell', compact('items', 'categories', 'conditions'));
+    }
+
+
 
     public function store(Request $request)
     {
 
         if($request->hasFile('item_img')) {
-            $item_img = $request->file('item_img')->store('images', 'public');
+            $item_img = $request->file('item_img')->store('public/images');
         }
-
-        // priceを数値に変換
-        $price = str_replace(',', '', $request->price); // カンマを削除
-        $price = (float) $price; // float型にキャスト
 
         $item = Item::create([
             'user_id' => auth()->id(),

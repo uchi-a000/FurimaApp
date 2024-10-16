@@ -23,7 +23,7 @@ class Item extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function conditions()
+    public function condition()
     {
         return $this->belongsTo(Condition::class);
     }

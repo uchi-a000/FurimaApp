@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\CategoryItem;
 use App\Models\Item;
-use App\Models\Category;
-use App\Models\Condition;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class HomeController extends Controller
@@ -18,13 +17,12 @@ class HomeController extends Controller
         return view('index', compact('items'));
     }
 
-    public function sell(Request $request)
+    public function itemDetail($id)
     {
-        $user = Auth::user();
-        $items = Item::where('user_id', $user->id)->get();
-        $categories = Category::all();
-        $conditions = Condition::all();
+        $user_id = Auth::id();
+        $item = Item::with('condition')->find($id);
+        $category_items = CategoryItem::where('item_id', $item->id)->with('category')->get();
 
-        return view('sell', compact('items', 'categories', 'conditions'));
+        return view('item_detail', compact('item', 'category_items'));
     }
 }

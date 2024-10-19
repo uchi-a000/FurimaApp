@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,6 @@ Route::post('logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::middleware('auth')->group(function () {
     Route::get('/sell', [SellController::class, 'sell'])->name('sell');
     Route::post('/sell', [SellController::class, 'store']);
+
+    Route::match(['post', 'delete'], '/favorites/{item}', [FavoriteController::class, 'toggleFavorite'])->name('favorites');
 });

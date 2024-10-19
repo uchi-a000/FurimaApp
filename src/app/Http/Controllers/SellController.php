@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class SellController extends Controller
 {
 
-
     public function sell(Request $request)
     {
         $user = Auth::user();
@@ -21,8 +20,6 @@ class SellController extends Controller
 
         return view('sell', compact('items', 'categories', 'conditions'));
     }
-
-
 
     public function store(Request $request)
     {

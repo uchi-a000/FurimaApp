@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="sell__content">
+<div class="sell__container">
     <h2 class="sell-ttl">商品の出品</h2>
     <div class="sell__alert">
         @if(session('message'))

@@ -7,7 +7,7 @@
     color: #fff;
 }
 
-.header-ttl {
+.logo-link {
     content: "";
     background: url(../img/logo.svg) no-repeat;
     background-size: 300px;
@@ -50,11 +50,11 @@ a {
 .header-nav-item__btn{
     background: none;
     border: none;
-    color: inherit;
     cursor: pointer;
-    padding: 0;
+    padding: 0 20px;
     font: inherit;
     color: #fff;
+    font-size: 20px;
 }
 
 .sell__link {

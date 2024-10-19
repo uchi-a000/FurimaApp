@@ -13,11 +13,11 @@
 <body>
     <header class="header">
         @if(!Request::is('sell'))
-        <h1 class="header-ttl"></h1>
+        <h1><a class="logo-link" href="/"></a></h1>
         @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
             <form class="search-form" action="">
-                <input class="search-input" type="text" name="keyword" placeholder="何をお探しですが？" value="">
+                <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですが？" value="">
             </form>
         </div>
         @guest
@@ -44,11 +44,8 @@
         @endif
         @endif
     </header>
-
-
     <main>
         @yield('content')
     </main>
 </body>
-
 </html>

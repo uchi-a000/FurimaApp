@@ -33,11 +33,6 @@ class Item extends Model
         return $this->belongsToMany(Category::class, 'category_item');
     }
 
-    public function favorites()
-    {
-        return $this->belongsToMany(User::class, 'favorites', 'item_id', 'user_id');
-    }
-
     public function comment()
     {
         return $this->hasMany(Comment::class);
@@ -47,4 +42,10 @@ class Item extends Model
     {
         return $this->hasMany(SoldItem::class);
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
 }

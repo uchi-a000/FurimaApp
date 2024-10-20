@@ -40,33 +40,13 @@
                     <form class="comments__form" action="{{ route('comment', $item->id) }}" method="POST">
                         @csrf
                         <button class="comments-submit" type="submit" name="comment">
-                            <img class="speech_bubble-img" src="{{ asset('img/speech_bubble.png')}}" alt="speech bubble">
+                            <img class="speech bubble-img" src="{{ asset('img/speech_bubble.png')}}" alt="speech bubble">
                         </button>
                     </form>
                     <div class="favorites-count">
                         {{ $item->comment()->count() }}
                     </div>
                 </div>
-            </div>
-
-            <form class="item-form">
-                @csrf
-                <div class="form__btn">
-                    <button class="btn" type="submit">購入する</button>
-                </div>
-            </form>
-            <h2>商品説明</h2>
-            <div class="description">{{ $item->description }}</div>
-            <h2>商品の情報</h2>
-            <div class="category">
-                <div class="ttl">カテゴリー</div>
-                @foreach($category_items as $category_item)
-                <div class="category__item">{{ $category_item->category->name }}</div>
-                @endforeach
-            </div>
-            <div class="condition">
-                <div class="ttl">商品の状態</div>
-                <div class="condition__item">{{ $item->condition->condition }}</div>
             </div>
         </div>
     </div>

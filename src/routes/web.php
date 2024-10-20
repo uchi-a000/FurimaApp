@@ -19,6 +19,7 @@ use App\Http\Controllers\FavoriteController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [HomeController::class, 'search'])->name('shop.search');
 Route::get('/detail/{item_id}', [HomeController::class, 'itemDetail'])->name('item_detail');
 
 Route::get('/register', [RegisterController::class, 'create']);
@@ -33,4 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/sell', [SellController::class, 'store']);
 
     Route::match(['post', 'delete'], '/favorites/{item}', [FavoriteController::class, 'toggleFavorite'])->name('favorites');
+
+    Route::get('/comment/{id}', [HomeController::class, 'comment'])->name('comment');
+    Route::post('/comment/{id}', [HomeController::class, 'comment'])->name('comment');
+    Route::post('/comment', [HomeController::class, 'store']);
 });

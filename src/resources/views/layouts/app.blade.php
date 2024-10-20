@@ -16,8 +16,8 @@
         <h1><a class="logo-link" href="/"></a></h1>
         @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
-            <form class="search-form" action="">
-                <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですが？" value="">
+            <form class="search-form" action="/search" method="GET">
+                <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですが？" value="{!! $keyword ?? '' !!}" >
             </form>
         </div>
         @guest
@@ -48,4 +48,5 @@
         @yield('content')
     </main>
 </body>
+
 </html>

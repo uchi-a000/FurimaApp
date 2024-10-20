@@ -28,7 +28,8 @@
     color: #fff;
     text-decoration: none;
     margin: 5px;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 5px;
 }
 
@@ -54,22 +55,26 @@
     padding: 20px 100px;
 }
 
-.favorites {
+.favorites-comments__content {
+    display: flex;
+}
+
+.favorites, .comments {
     padding: 20px 0;
 }
 
-.favorites-submit {
+.favorites-submit, .comments-submit {
     border-style: none;
     background: none;
 }
 
-.heart-img {
+.heart-img, .speech_bubble-img {
     width: 35px;
     height: 35px;
+    margin: 0 20px;
 }
 
 .favorites-count {
-    padding-left: 18px;
+    padding-left: 40px;
     font-size: 12px;
-
 }

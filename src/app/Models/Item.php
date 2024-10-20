@@ -48,4 +48,34 @@ class Item extends Model
         return $this->belongsToMany(User::class, 'favorites');
     }
 
+
+    public static function conditionFormat($conditions)
+    {
+        $result = "";
+        foreach ($conditions as $index => $condition) {
+            if ($index == 0) {
+                $result =  $condition;
+            } else {
+                $result =  $result . "・" . $condition;
+            }
+        }
+        return $result;
+    }
+
+    public static function searchItems($keyword)
+    {
+        $query = Item::query();
+        $conditions = array();
+
+        if (!empty($keyword)) {
+            array_push($conditions, $keyword);
+            $query->where('name', 'like', "%$keyword%");
+        }
+
+        $items = $query->get();
+        $text = self::conditionFormat($conditions);
+
+        return compact('items', 'text');
+    }
+
 }

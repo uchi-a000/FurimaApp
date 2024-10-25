@@ -9,7 +9,6 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
 
-
 class HomeController extends Controller
 {
     public function index()
@@ -21,14 +20,14 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request['keyword'];
+        $keyword = $request->input('keyword');
 
-        $searchResult = Item::searchItems($keyword);
-        $items = $searchResult['items'];
-        $text = "「" . $searchResult['text'] . "」の検索結果";
+        $items = Item::query()
+                ->where('name', 'like', "%{$keyword}%")
+                ->get();
 
-        session()->flash('fs_msg', $text);
-        return view('index', compact("items", "text"));
+        return view('index', compact('keyword', 'items'));
+
     }
 
     public function itemDetail($id)
@@ -42,15 +41,19 @@ class HomeController extends Controller
 
     public function comment($id)
     {
+        $user_id = Auth::id();
         $item = Item::find($id);
+        $comments = Comment::where('item_id', $id)
+                            ->where('user_id', $user_id)
+                            ->get();
 
-        return view('comment', compact('item'));
+        return view('comment', compact('item', 'comments'));
     }
 
     public function store(Request $request)
     {
 
-        $item = Item::find($request->item->id);
+        Item::find($request->item_id);
 
         Comment::create([
             'user_id' => auth()->id(),

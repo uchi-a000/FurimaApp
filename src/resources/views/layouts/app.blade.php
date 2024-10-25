@@ -17,7 +17,7 @@
         @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
             <form class="search-form" action="/search" method="GET">
-                <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですが？" value="{!! $keyword ?? '' !!}" >
+                <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですが？" value="{{ old('keyword', $keyword ?? '') }}">
             </form>
         </div>
         @guest

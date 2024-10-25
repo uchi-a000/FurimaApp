@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item_detail.css') }}">
+<link rel="stylesheet" href="{{ asset('css/comment.css') }}">
 @endsection
 
 @section('content')
@@ -10,7 +10,6 @@
         <div class="item__img">
             <img src="{{ Storage::url($item->item_img) }}" alt="ストレージ画像">
         </div>
-
         <div class="item-info">
             <h1>{{ $item->name }}</h1>
             <div class="price"> &yen; {{ $item->price }} （値段）</div>
@@ -40,7 +39,7 @@
                     <form class="comments__form" action="{{ route('comment', $item->id) }}" method="POST">
                         @csrf
                         <button class="comments-submit" type="submit" name="comment">
-                            <img class="speech bubble-img" src="{{ asset('img/speech_bubble.png')}}" alt="speech bubble">
+                            <img class="speech_bubble-img" src="{{ asset('img/speech_bubble.png')}}" alt="speech bubble">
                         </button>
                     </form>
                     <div class="favorites-count">
@@ -48,6 +47,21 @@
                     </div>
                 </div>
             </div>
+            <p>コメント( {{ $item->comment()->count() }} )</p>
+            @foreach($comments as $comment)
+            <div>{{ $comment->comment }}</div>
+            @endforeach
+            <form class="comment-form" action="/comment" method="POST">
+                @csrf
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
+                <div class="comment-form-item">
+                    <p class="comment-form-item__label">商品へのコメント</p>
+                    <textarea class="comment-form-item__textarea" name="comment" id="comment">{{ old('comment') }}</textarea>
+                    <div class="form__btn">
+                        <button class="btn" type="submit">コメントを送信する</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

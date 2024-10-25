@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,10 @@ use App\Http\Controllers\FavoriteController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/search', [HomeController::class, 'search'])->name('shop.search');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/detail/{item_id}', [HomeController::class, 'itemDetail'])->name('item_detail');
+Route::get('/comment/{id}', [HomeController::class, 'comment'])->name('comment');
+Route::post('/comment/{id}', [HomeController::class, 'comment'])->name('comment');
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
@@ -35,7 +38,10 @@ Route::middleware('auth')->group(function () {
 
     Route::match(['post', 'delete'], '/favorites/{item}', [FavoriteController::class, 'toggleFavorite'])->name('favorites');
 
-    Route::get('/comment/{id}', [HomeController::class, 'comment'])->name('comment');
-    Route::post('/comment/{id}', [HomeController::class, 'comment'])->name('comment');
     Route::post('/comment', [HomeController::class, 'store']);
+
+    Route::get('/mypage', [MypageController::class, 'myPage'])->name('my_page');
+    Route::get('/mypage/profile', [MypageController::class, 'profile'])->name('profile');
+    Route::post('/mypage/profile', [MypageController::class, 'store']);
+    Route::patch('/mypage/update', [MypageController::class, 'update'])->name('update');
 });

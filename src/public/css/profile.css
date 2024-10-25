@@ -1,0 +1,76 @@
+
+.profile__ttl {
+    text-align: center;
+    margin: 20px;
+}
+
+.user-img {
+    width: 150px;
+    height: 150px;
+    background: #DDD;
+    border-radius: 50%;
+}
+
+
+
+.custom-file-new-upload {
+    display: inline-block;
+    border: 1px solid red;
+    padding: 5px 20px;
+    background-color: #fff;
+    color: red;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 110px;
+
+}
+
+.custom-file-upload {
+    display: inline-block;
+    border: 1px solid red;
+    padding: 5px 20px;
+    background-color: #fff;
+    color: red;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 30px;
+}
+
+.custom-file-upload:hover {
+    background-color: #FFC0CB;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+}
+
+.form__group {
+    margin: 10px;
+
+}
+
+.form__input{
+    display: block;
+    padding: 8px 12px;
+    width: 30em;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #909090;
+    background-color: #fff;
+}
+
+.btn {
+    width: 95%;
+    border: 1px solid #FF5655;
+    padding: 10px;
+    background-color: #FF5655;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+}

@@ -17,7 +17,7 @@
                 <a class="shop-detail__form btn" href="{{ route('item_detail', $item->id) }}">
                     <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
                 </a>
-                <div class="">{{ \Illuminate\Support\str::limit($item->description, 30) }}</div>
+                <div>{{ \Illuminate\Support\str::limit($item->description, 30) }}</div>
             </div>
         </div>
         @endforeach

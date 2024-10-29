@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function itemDetail($id)
     {
-        $user_id = Auth::id();
+
         $item = Item::with('condition')->find($id);
         $category_items = CategoryItem::where('item_id', $item->id)->with('category')->get();
 

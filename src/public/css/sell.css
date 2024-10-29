@@ -1,0 +1,10 @@
+
+.sell__ttl {
+    text-align: center;
+    margin: 20px;
+}
+
+.sell__content {
+    display: flex;
+        justify-content: center;
+}

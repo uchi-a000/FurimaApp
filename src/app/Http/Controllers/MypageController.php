@@ -50,6 +50,7 @@ class MypageController extends Controller
 
     public function update(Request $request)
     {
+
         if ($request->has('back')) {
             return redirect('/mypage/profile')->withInput();
         }

@@ -49,12 +49,7 @@
                 </div>
             </div>
 
-            <form class="item-form">
-                @csrf
-                <div class="form__btn">
-                    <button class="btn" type="submit">購入する</button>
-                </div>
-            </form>
+            <a class="purchase_link" href="{{ route('purchase', $item->id) }}">購入手続きへ</a>
             <h2>商品説明</h2>
             <div class="description">{{ $item->description }}</div>
             <h2>商品の情報</h2>

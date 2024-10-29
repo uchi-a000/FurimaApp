@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [MypageController::class, 'profile'])->name('profile');
     Route::post('/mypage/profile', [MypageController::class, 'store']);
     Route::patch('/mypage/update', [MypageController::class, 'update'])->name('update');
+
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'show'])->name('purchase_address');
+    Route::patch('/purchase/address/update', [PurchaseController::class, 'update'])->name('update');
 });

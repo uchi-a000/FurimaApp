@@ -39,6 +39,6 @@ class SellController extends Controller
 
         $item->categories()->attach($request->category_item_ids);
 
-        return redirect()->back()->with('message', '店舗情報を変更しました');
+        return redirect()->back()->with('message', '商品を登録しました');
     }
 }

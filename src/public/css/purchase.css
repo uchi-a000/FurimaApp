@@ -1,0 +1,38 @@
+.purchase__container {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px;
+}
+
+.item__unit{
+    display: flex;
+}
+
+.img {
+    width: 80%;
+    height: 200px;
+}
+
+
+.link {
+    color: blue;
+}
+
+
+.confirm__table {
+    border: 1px solid;
+    display: inline-block;
+    padding: 100px;
+}
+
+.confirm__row {
+    padding: 20px;
+    display: block;
+}
+
+.confirm__label {
+    padding-right: 100px;
+}
+
+
+

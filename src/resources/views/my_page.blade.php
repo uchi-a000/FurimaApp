@@ -31,7 +31,7 @@
             @foreach($items as $item)
             <div class="item__block">
                 <div class="item__img">
-                    <a class="shop-detail__form btn" href="{{ route('item_detail', $item->id) }}">
+                    <a class="shop-detail__form" href="{{ route('item_detail', $item->id) }}">
                         <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
                     </a>
                     <div>{{ \Illuminate\Support\str::limit($item->description, 30) }}</div>

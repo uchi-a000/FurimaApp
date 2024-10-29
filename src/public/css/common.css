@@ -68,3 +68,16 @@ a {
     color: #000;
     margin-left: 50px;
 }
+
+.btn {
+    width: 95%;
+    border: 1px solid #FF5655;
+    padding: 10px;
+    background-color: #FF5655;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}

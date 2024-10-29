@@ -63,6 +63,7 @@
         <form class="form" action="{{ route('update', $profile->id) }}" method="POST" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
+            <input type="hidden" name="id" value="{{ $profile->id }}">
             <div class="form__group">
                 <img class="user-img" src="{{ Storage::url($profile->img) }}" alt="アイテム画像">
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>

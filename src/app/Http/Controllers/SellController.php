@@ -25,7 +25,7 @@ class SellController extends Controller
     {
 
         if($request->hasFile('item_img')) {
-            $item_img = $request->file('item_img')->store('public/images');
+            $item_img = $request->file('item_img')->store('images', 'public');
         }
 
         $item = Item::create([

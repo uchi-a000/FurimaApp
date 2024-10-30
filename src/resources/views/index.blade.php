@@ -15,7 +15,11 @@
         <div class="item__block">
             <div class="item__img">
                 <a class="shop-detail__form" href="{{ route('item_detail', $item->id) }}">
+                    @if(Storage::disk('public')->exists($item['item_img']))
                     <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
+                    @else
+                    <img src="{{ $item->item_img }}" alt="ダミー画像" />
+                    @endif
                 </a>
                 <div>{{ \Illuminate\Support\str::limit($item->description, 30) }}</div>
             </div>

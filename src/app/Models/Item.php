@@ -38,7 +38,7 @@ class Item extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function sold_items()
+    public function soldItems()
     {
         return $this->hasMany(SoldItem::class);
     }

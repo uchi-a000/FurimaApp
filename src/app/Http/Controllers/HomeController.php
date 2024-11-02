@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\CategoryItem;
 use App\Models\Comment;
 use App\Models\Item;
+use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -16,6 +17,14 @@ class HomeController extends Controller
         $items = Item::all();
 
         return view('index', compact('items'));
+    }
+
+    public function myList()
+    {
+        $user = Auth::user();
+        $favorites = Favorite::where('user_id', $user->id)->with('item')->get();
+
+        return view('my_list', compact('favorites'));
     }
 
     public function search(Request $request)

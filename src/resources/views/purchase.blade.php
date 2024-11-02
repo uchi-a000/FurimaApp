@@ -6,10 +6,21 @@
 
 @section('content')
 <div class="purchase__container">
+    <div class="profile__alert">
+        @if(session('message'))
+        <div class="profile__alert--success">
+            {{ session('message') }}
+        </div>
+        @endif
+    </div>
     <div class="item__content">
         <div class="item__unit">
             <div class="item__img">
-                <img class="img" src="{{ Storage::url($item->item_img) }}" alt="ストレージ画像">
+                @if(Storage::disk('public')->exists($item['item_img']))
+                <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
+                @else
+                <img src="{{ $item->item_img }}" alt="ダミー画像" />
+                @endif
             </div>
             <div class="item-info">
                 <h1>{{ $item->name }}</h1>
@@ -37,7 +48,9 @@
                 <td class="confirm__data">コンビニ払い</td>
             </tr>
         </table>
-        <form action="">
+        <form action="/purchase" method="POST">
+            @csrf
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
             <button class="btn">購入する</button>
         </form>
     </div>

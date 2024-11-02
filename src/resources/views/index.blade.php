@@ -5,10 +5,12 @@
 @endsection
 
 @section('content')
-<div class="item__list">
-    <a href="" class="ttl">おすすめ</a>
-    <a href="" class="ttl">マイリスト</a>
-</div>
+<nav class="heading-nav">
+    <ul class="heading-nav-list">
+        <li class="heading-nav-item-1">おすすめ</li>
+        <li class="heading-nav-item-2"><a href="/my_list">マイリスト</a></li>
+    </ul>
+</nav>
 <div class="item__container">
     <div class="item__inner">
         @foreach($items as $item)

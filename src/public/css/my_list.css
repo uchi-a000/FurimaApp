@@ -1,17 +1,17 @@
-.item__container {
+.favorites-item__container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 50px 0;
 }
 
-.item__inner {
+.favorites-item__inner {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 85px 50px;
     justify-content: center;
 }
 
-.heading-nav-list{
+.heading-nav-list {
     display: flex;
     font-size: 24px;
     font-weight: bold;
@@ -23,7 +23,7 @@
     padding: 0px 50px;
 }
 
-.heading-nav-item-1 {
+.heading-nav-item-2 {
     color: red;
     font-weight: bold;
     border-bottom: 4px solid red;

@@ -8,7 +8,11 @@
 <div class="item-detail__container">
     <div class="item-detail__inner">
         <div class="item__img">
-            <img src="{{ Storage::url($item->item_img) }}" alt="ストレージ画像">
+            @if(Storage::disk('public')->exists($item['item_img']))
+            <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
+            @else
+            <img src="{{ $item->item_img }}" alt="ダミー画像" />
+            @endif
         </div>
         <div class="item-info">
             <h1>{{ $item->name }}</h1>

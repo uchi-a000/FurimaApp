@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::match(['post', 'delete'], '/favorites/{item}', [FavoriteController::class, 'toggleFavorite'])->name('favorites');
 
     Route::post('/comment', [HomeController::class, 'store']);
+    Route::get('/my_list', [HomeController::class, 'myList'])->name('my_list');
 
     Route::get('/mypage', [MypageController::class, 'myPage'])->name('my_page');
     Route::get('/mypage/profile', [MypageController::class, 'profile'])->name('profile');
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/mypage/update', [MypageController::class, 'update'])->name('update');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');
+    Route::post('/purchase', [PurchaseController::class, 'store']);
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'show'])->name('purchase_address');
     Route::patch('/purchase/address/update', [PurchaseController::class, 'update'])->name('update');
 });

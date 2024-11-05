@@ -19,8 +19,9 @@
         <form class="form" action="/mypage/profile" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form__group">
-                <label for="file-upload" class="custom-file-new-upload">画像を選択する</label>
-                <input id="file-upload" class="file" type="file" name="img" style="display: none;" />
+                <img id="img-preview" class="img-preview" src=" {{  asset('img/user_img.svg') }}" alt="プレビュー画像" >
+                <label for="file-upload" class="custom-file-upload">画像を選択する</label>
+                <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewAndUploadImage(event)" />
             </div>
             <div class="form__group">
                 <div class="form__label" for="name">ユーザー名</div>
@@ -60,14 +61,14 @@
     </div>
     @else
     <div class="content">
-        <form class="form" action="{{ route('update', $profile->id) }}" method="POST" enctype="multipart/form-data">
+        <form class="form" action="{{ route('profile_update', $profile->id) }}" method="POST" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <input type="hidden" name="id" value="{{ $profile->id }}">
             <div class="form__group">
-                <img class="user-img" src="{{ Storage::url($profile->img) }}" alt="アイテム画像">
+                <img class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>
-                <input id="file-upload" class="file" type="file" name="img" style="display: none;" />
+                <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewImage(event)" />
             </div>
             <div class="form__group">
                 <label class="form__label" for="name">ユーザー名</label>
@@ -108,3 +109,36 @@
     @endif
 </div>
 @endsection
+
+<script>
+    function previewAndUploadImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('img-preview');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            const formData = new FormData();
+            formData.append('img', file);
+
+            fetch('/mypage/profile/upload', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: formData
+                })
+                .then(Response => Response.json())
+                .then(data => {
+                    // アップロード成功時の処理（必要に応じて）
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    }
+</script>

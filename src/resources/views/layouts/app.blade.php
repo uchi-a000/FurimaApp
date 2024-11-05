@@ -12,7 +12,6 @@
 
 <body>
     <header class="header">
-        @if(!Request::is('sell'))
         <h1><a class="logo-link" href="/"></a></h1>
         @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
@@ -41,7 +40,6 @@
         </nav>
         @endguest
         <a class="sell__link" href="/sell">出品</a>
-        @endif
         @endif
     </header>
     <main>

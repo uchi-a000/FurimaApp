@@ -29,9 +29,9 @@
                 </div>
             </div>
             <div class="register-form__button">
-                <button class="btn" type="submit">ログインする</button>
+                <button class="login__btn" type="submit">ログインする</button>
             </div>
-            <a class="login__link" href="/register">会員登録はこちら</a>
+            <a class="register__link" href="/register">会員登録はこちら</a>
         </form>
     </div>
 </div>

@@ -15,7 +15,7 @@
     </div>
     <h1 class="profile__ttl">住所の変更</h1>
     <div class="content">
-        <form class="form" action="{{ route('update', $profile->id) }}" method="POST">
+        <form class="form" action="{{ route('address_update', $profile->id) }}" method="POST">
             @method('PATCH')
             @csrf
             <input type="hidden" name="id" value="{{ $profile->id }}">

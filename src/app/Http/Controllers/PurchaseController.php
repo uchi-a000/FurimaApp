@@ -40,7 +40,7 @@ class PurchaseController extends Controller
         return view('purchase_address', compact('profile'));
     }
 
-    public function update(Request $request)
+    public function addressUpdate(Request $request)
     {
 
         $profile = Profile::find($request->id);

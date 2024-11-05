@@ -4,26 +4,11 @@
     margin: 20px;
 }
 
-.user-img {
+.img-preview {
     width: 150px;
     height: 150px;
     background: #DDD;
     border-radius: 50%;
-}
-
-
-
-.custom-file-new-upload {
-    display: inline-block;
-    border: 1px solid red;
-    padding: 5px 20px;
-    background-color: #fff;
-    color: red;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 110px;
-
 }
 
 .custom-file-upload {
@@ -35,7 +20,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin: 0 30px;
+    margin-left: 50px;
 }
 
 .custom-file-upload:hover {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MypageController extends Controller
 {
@@ -29,10 +30,23 @@ class MypageController extends Controller
         return view('profile', compact('profile'));
     }
 
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // バリデーション
+        ]);
+
+        $imgPath = $request->file('img')->store('profile', 'public');
+
+        return response()->json(['path' => Storage::url($imgPath)]);
+    }
+
+
+
     public function store(Request $request)
     {
         if ($request->hasFile('img')) {
-            $img = $request->file('img')->store('public/profile');
+            $img = $request->file('img')->store('profile', 'public');
         }
 
         Profile::create([
@@ -58,9 +72,9 @@ class MypageController extends Controller
         $profile = Profile::find($request->id);
 
         if ($request->hasFile('img')) {
-            $img_path = $request->file('img')->store('public/profile');
+            $img_path = $request->file('img')->store('profile', 'public');
             $img_name = basename($img_path);
-            $profile->image = $img_name;
+            $profile->img = $img_name;
         }
 
         $profile_data = $request->only(['name', 'postcode', 'address', 'building']);

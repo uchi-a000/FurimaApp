@@ -9,11 +9,11 @@
     <div class="heading">
         <div class="user-profile">
             @if($profile)
-            <img class="user-img" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
-            <h2 class="user-name">{{ $profile->name }}</h2>
+            <img class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
+            <h2 class="user-name">{{ Auth::user()->name }} </h2>
             @else
-            <div class="no-img"><span>No image</span></div>
-            <h2 class="user-name">ユーザー名</h2>
+            <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
+            <h2 class="user-name">{{ Auth::user()->name }} </h2>
             @endif
         </div>
         <div>
@@ -25,13 +25,13 @@
         <ul class="menu-nav-list">
             <li class="menu-nav-list-item">
                 <a href="" id="favorites">
-                    <img class="icon-img" src="{{ asset('img/heart.svg')}}" alt="ハート">
+                    <img class="icon-img" src="{{ asset('img/gray_star.png')}}" alt="ハート">
                     <p class="item__ttl">いいね！一覧</p>
                 </a>
             </li>
             <li class="menu-nav-list-item">
                 <a href="" id="follow">
-                    <img class="icon-img" src="{{ asset('img/bookmark.svg')}}" alt="">
+                    <img class="icon-img" src="{{ asset('img/follow.svg')}}" alt="">
                     <p class="item__ttl">フォローリスト</p>
                 </a>
             </li>

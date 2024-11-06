@@ -2,30 +2,24 @@
 
 .heading{
     display: flex;
-    justify-content: space-around;
-    margin: 30px;
-}
-
-.no-img {
-    width: 150px;
-    height: 150px;
-    background: #DDD;
-    border-radius: 50%;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    margin: 30px;
 }
 
 .user-profile {
     display: flex;
 }
 
-.user-img {
-    width: 150px;
-    height: 150px;
-    background: #DDD;
+.img-preview {
+    width: 120px;
+    height: 120px;
+    background: #fff;
     border-radius: 50%;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .user-name {
@@ -46,7 +40,7 @@
 }
 
 .profile-link:hover {
-    background-color: #FFC0CB;
+    background-color: #ffdcdf;
 }
 .menu-nav-list {
     display: flex;

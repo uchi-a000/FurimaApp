@@ -50,10 +50,10 @@ class HomeController extends Controller
 
     public function comment($id)
     {
-        $user_id = Auth::id();
+        $user = Auth::user();
         $item = Item::find($id);
         $comments = Comment::where('item_id', $id)
-                            ->where('user_id', $user_id)
+                            ->with('user.profile')
                             ->get();
 
         return view('comment', compact('item', 'comments'));

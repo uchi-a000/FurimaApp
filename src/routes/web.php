@@ -46,8 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [MypageController::class, 'profile'])->name('profile');
     Route::post('/mypage/profile', [MypageController::class, 'store']) ->name('profile_store');
     Route::patch('/mypage/update', [MypageController::class, 'update'])->name('profile_update');
-    Route::post('/mypage/profile/upload', [MypageController::class, 'upload'])->name('profile_upload');
-
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');
     Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase_store');

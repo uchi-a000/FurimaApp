@@ -16,7 +16,7 @@
         </div>
 
         <div class="item-info">
-            <h1>{{ $item->name }}</h1>
+            <h2>{{ $item->name }}</h2>
             <div class="price"> &yen; {{ $item->price }} （値段）</div>
             <div class="favorites-comments__content">
                 <div class="favorites">
@@ -54,9 +54,9 @@
             </div>
 
             <a class="purchase_link" href="{{ route('purchase', $item->id) }}">購入手続きへ</a>
-            <h2>商品説明</h2>
+            <h3>商品説明</h3>
             <div class="description">{{ $item->description }}</div>
-            <h2>商品の情報</h2>
+            <h3>商品の情報</h3>
             <div class="category">
                 <div class="ttl">カテゴリー</div>
                 @foreach($category_items as $category_item)

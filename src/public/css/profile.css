@@ -5,11 +5,13 @@
 }
 
 .img-preview {
-    width: 150px;
-    height: 150px;
-    background: #DDD;
+    width: 120px;
+    height: 120px;
+    background: #fff;
     border-radius: 50%;
+    border: 1px solid #ddd;
 }
+
 
 .custom-file-upload {
     display: inline-block;
@@ -24,7 +26,7 @@
 }
 
 .custom-file-upload:hover {
-    background-color: #FFC0CB;
+    background-color: #ffdcdf;
 }
 
 .content{
@@ -37,11 +39,15 @@
 
 }
 
+.form__label {
+    font-weight: bold;
+}
+
 .form__input{
     display: block;
     padding: 8px 12px;
-    width: 30em;
-    height: 50px;
+    width: 35em;
+    height: 40px;
     border-radius: 5px;
     border: 1px solid #909090;
     background-color: #fff;

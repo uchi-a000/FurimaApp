@@ -23,7 +23,7 @@
                 @endif
             </div>
             <div class="item-info">
-                <h1>{{ $item->name }}</h1>
+                <h2>{{ $item->name }}</h2>
                 <div class="price"> &yen; {{ $item->price }} （値段）</div>
             </div>
         </div>

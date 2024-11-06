@@ -5,19 +5,19 @@
 @endsection
 
 @section('content')
-<div class="item-detail__container">
-    <div class="item-detail__inner">
-        <div class="item__img">
+<div class="comment__container">
+    <div class="comment__inner">
+        <div class="item-img__content">
             @if(Storage::disk('public')->exists($item['item_img']))
             <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
             @else
             <img src="{{ $item->item_img }}" alt="ダミー画像" />
             @endif
         </div>
-        <div class="item-info">
+        <div class="item-comment__content">
             <h1>{{ $item->name }}</h1>
             <div class="price"> &yen; {{ $item->price }} （値段）</div>
-            <div class="favorites-comments__content">
+            <div class="favorites-comments__item">
                 <div class="favorites">
                     @if(Auth::check() && Auth::user()->favorites->contains('id', $item->id))
                     <form class="favorites__form" action="{{ route('favorites', $item->id) }}" method="POST">
@@ -46,14 +46,22 @@
                             <img class="speech_bubble-img" src="{{ asset('img/speech_bubble.png')}}" alt="speech bubble">
                         </button>
                     </form>
-                    <div class="favorites-count">
+                    <div class="comments-count">
                         {{ $item->comment()->count() }}
                     </div>
                 </div>
             </div>
-            <p>コメント( {{ $item->comment()->count() }} )</p>
             @foreach($comments as $comment)
-            <div>{{ $comment->comment }}</div>
+            <div class="user__item">
+                @if($comment->user->profile)
+                <img class="img-preview" src="{{ Storage::url('profile/' . $comment->user->profile->img) }}" alt="ストレージ画像">
+                <div class="user-name">{{ $comment->user->name }} </div>
+                @else
+                <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
+                <div class="user-name">{{ $comment->user->name }} </div>
+                @endif
+            </div>
+            <div class="comment-box">{{ $comment->comment }}</div>
             @endforeach
             <form class="comment-form" action="/comment" method="POST">
                 @csrf

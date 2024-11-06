@@ -12,7 +12,7 @@
 
 <body>
     <header class="header">
-        <h1><a class="logo-link" href="/"></a></h1>
+        <h2><a class="logo-link" href="/"></a></h2>
         @if(!Request::is('login') && !Request::is('register'))
         <div class="header-search">
             <form class="search-form" action="/search" method="GET">
@@ -39,7 +39,9 @@
             @endif
         </nav>
         @endguest
-        <a class="sell__link" href="/sell">出品</a>
+        <div>
+            <a class="sell__link" href="/sell">出品</a>
+        </div>
         @endif
     </header>
     <main>

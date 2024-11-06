@@ -13,18 +13,27 @@
         </div>
         @endif
     </div>
-    <h1 class="profile__ttl">プロフィール設定</h1>
+    <h2 class="profile__ttl">プロフィール設定</h2>
     @if(!$profile)
     <div class="content">
         <form class="form" action="/mypage/profile" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form__group">
-                <img id="img-preview" class="img-preview" src=" {{  asset('img/user_img.svg') }}" alt="プレビュー画像" >
+                <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>
                 <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewAndUploadImage(event)" />
             </div>
             <div class="form__group">
-                <div class="form__label" for="name">ユーザー名</div>
+                <div class="form__label" for="name">ニックネーム</div>
+                <input class="form__input" type="text" name="name" value="{{ Auth::user()->name }}" />
+                <div class="form__error">
+                    @error('name')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
+            <div class="form__group">
+                <div class="form__label" for="name">名前</div>
                 <input class="form__input" type="text" name="name" value="{{ old('name') }}" />
                 <div class="form__error">
                     @error('name')
@@ -66,12 +75,21 @@
             @csrf
             <input type="hidden" name="id" value="{{ $profile->id }}">
             <div class="form__group">
-                <img class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
+                <img id="img-preview" class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>
-                <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewImage(event)" />
+                <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewAndUploadImage(event)" />
             </div>
             <div class="form__group">
-                <label class="form__label" for="name">ユーザー名</label>
+                <div class="form__label" for="name">ニックネーム</div>
+                <input class="form__input" type="text" name="name" value="{{ Auth::user()->name }}" />
+                <div class="form__error">
+                    @error('name')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
+            <div class="form__group">
+                <label class="form__label" for="name">名前</label>
                 <input class="form__input" type="text" name="name" value="{{ $profile->name }}" />
                 <div class="form__error">
                     @error('name')
@@ -124,21 +142,6 @@
 
             const formData = new FormData();
             formData.append('img', file);
-
-            fetch('/mypage/profile/upload', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: formData
-                })
-                .then(Response => Response.json())
-                .then(data => {
-                    // アップロード成功時の処理（必要に応じて）
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
         }
     }
 </script>

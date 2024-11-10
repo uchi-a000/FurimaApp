@@ -33,26 +33,39 @@
     border-radius: 5px;
 }
 
+.description {
+    white-space: pre-wrap; /*改行も空白も保存できる*/
+}
+
 .category {
     display: flex;
+    margin: 50px 0;
 }
 
 .condition {
     display: flex;
 }
 
-.ttl {
+.category__ttl {
     font-weight: bold;
-    padding:20px 0 ;
+    margin-right: 100px;
+}
+
+.condition__ttl {
+    font-weight: bold;
+    margin-right: 120px;
 }
 
 .category__item {
-    padding: 20px 0 0 100px;
-
+    margin: 0 10px;
+    padding: 0 13px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background-color: #ddd;
 }
 
 .condition__item {
-    padding: 20px 100px;
+   
 }
 
 .favorites-comments__content {

@@ -52,7 +52,8 @@
                 </div>
             </div>
             @foreach($comments as $comment)
-            <div class="user__item">
+            <div class="user__item {{ $comment->user->id === auth()->id() ? 'self-comment' : '' }}">
+                <!-- ログインユーザーとコメントしようとしているユーザーが同じなら true→'self-comment' css適用-->
                 @if($comment->user->profile)
                 <img class="img-preview" src="{{ Storage::url('profile/' . $comment->user->profile->img) }}" alt="ストレージ画像">
                 <div class="user-name">{{ $comment->user->name }} </div>

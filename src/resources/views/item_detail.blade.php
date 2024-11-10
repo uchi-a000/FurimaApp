@@ -58,13 +58,13 @@
             <div class="description">{{ $item->description }}</div>
             <h3>商品の情報</h3>
             <div class="category">
-                <div class="ttl">カテゴリー</div>
+                <div class="category__ttl">カテゴリー</div>
                 @foreach($category_items as $category_item)
                 <div class="category__item">{{ $category_item->category->name }}</div>
                 @endforeach
             </div>
             <div class="condition">
-                <div class="ttl">商品の状態</div>
+                <div class="condition__ttl">商品の状態</div>
                 <div class="condition__item">{{ $item->condition->condition }}</div>
             </div>
         </div>

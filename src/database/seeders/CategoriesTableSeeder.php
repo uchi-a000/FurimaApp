@@ -17,6 +17,10 @@ class CategoriesTableSeeder extends Seeder
         $names = [
             "レディース",
             "メンズ",
+            "洋服",
+            "靴",
+            "アクセサリー",
+            "小物",
             "ゲーム",
             "おもちゃ",
             "楽器",

@@ -17,11 +17,10 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
+            $table->string('item_name');
             $table->string('price');
             $table->text('description')->nullable();
             $table->string('item_img');
-            $table->foreignId('category_item_id')->nullable();
             $table->timestamps();
         });
     }

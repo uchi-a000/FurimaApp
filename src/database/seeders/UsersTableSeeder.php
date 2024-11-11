@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Faker\Generator as Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,6 +16,14 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
+        $uniqueNames = [
+            '林檎',
+            'レモン',
+            'キウイ',
+            'ぶどう',
+            'みかん',
+        ];
+
         $uniqueEmails = [
             'user1@example.com',
             'user2@example.com',
@@ -25,9 +32,9 @@ class UsersTableSeeder extends Seeder
             'user5@example.com',
         ];
 
-        foreach ($uniqueEmails as $email) {
+        foreach ($uniqueEmails as $index => $email) {
             User::create([
-                'name' => null,
+                'name' => $uniqueNames[$index],
                 'email' => $email,
                 'password' => Hash::make('pppp0000')
             ]);

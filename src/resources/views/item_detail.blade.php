@@ -16,7 +16,7 @@
         </div>
 
         <div class="item-info">
-            <h2>{{ $item->name }}</h2>
+            <h2>{{ $item->item_name }}</h2>
             <div class="price"> &yen; {{ $item->price }} （値段）</div>
             <div class="favorites-comments__content">
                 <div class="favorites">

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\CategoryItem;
 use App\Models\Comment;
 use App\Models\Item;
 use App\Models\Favorite;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,12 +32,16 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
+        $category = $request->input('category');
+        $categories = Category::all();
 
         $items = Item::query()
-                ->where('name', 'like', "%{$keyword}%")
+                ->when($keyword, function ($query, $keyword) {
+                    return $query->where('item_name', 'like', "%{$keyword}%");
+                })
                 ->get();
 
-        return view('index', compact('keyword', 'items'));
+        return view('index', compact('keyword', 'category', 'categories', 'items'));
 
     }
 

@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <h2><a class="logo-link" href="/"></a></h2>
-        @if(!Request::is('login') && !Request::is('register'))
+        @if(!Request::is('login') && !Request::is('register') && !Request::is('sell'))
         <div class="header-search">
             <form class="search-form" action="/search" method="GET">
                 <input class="search-input" type="text" name="keyword" placeholder="なにをお探しですが？" value="{{ old('keyword', $keyword ?? '') }}">

@@ -24,21 +24,22 @@ class SellController extends Controller
     public function store(Request $request)
     {
 
-        if($request->hasFile('item_img')) {
-            $item_img = $request->file('item_img')->store('images', 'public');
+        if ($request->hasFile('item_img_1')) {
+            $item_img_1 = $request->file('item_img_1')->store('images', 'public');
         }
 
         $item = Item::create([
             'user_id' => auth()->id(),
             'condition_id' => $request->condition_id,
-            'name' => $request->name,
+            'item_name' => $request->item_name,
             'price' => $request->price,
             'description' => $request->description,
-            'item_img' => $item_img,
+            'item_img_1' => $item_img_1,
         ]);
 
         $item->categories()->attach($request->category_item_ids);
 
         return redirect()->back()->with('message', '商品を登録しました');
     }
+
 }

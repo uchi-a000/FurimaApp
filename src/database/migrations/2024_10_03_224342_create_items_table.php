@@ -20,7 +20,9 @@ class CreateItemsTable extends Migration
             $table->string('item_name');
             $table->string('price');
             $table->text('description')->nullable();
-            $table->string('item_img');
+            $table->string('item_img_1');
+            $table->string('item_img_2')->nullable();
+            $table->string('item_img_3')->nullable();
             $table->timestamps();
         });
     }

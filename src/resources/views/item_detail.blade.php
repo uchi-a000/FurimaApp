@@ -8,10 +8,17 @@
 <div class="item-detail__container">
     <div class="item-detail__inner">
         <div class="item__img">
-            @if(Storage::disk('public')->exists($item['item_img']))
-            <img src="{{ Storage::url($item->item_img) }}" alt="アイテム画像">
+            @if(Storage::disk('public')->exists($item['item_img_1']))
+            <img src="{{ Storage::url($item->item_img_1) }}" alt="アイテム画像">
             @else
-            <img src="{{ $item->item_img }}" alt="ダミー画像" />
+            <img src="{{ $item->item_img_1 }}" alt="ダミー画像" />
+            @endif
+            @if($item->item_img_2)
+            <img src="{{ Storage::url($item->item_img_2) }}" alt="アイテム画像2">
+            @endif
+
+            @if($item->item_img_3)
+            <img src="{{ Storage::url($item->item_img_3) }}" alt="アイテム画像3">
             @endif
         </div>
 

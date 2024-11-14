@@ -10,11 +10,10 @@
         <div class="user-profile">
             @if($profile)
             <img class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
-            <h2 class="user-name">{{ Auth::user()->name }} </h2>
             @else
             <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
-            <h2 class="user-name">{{ Auth::user()->name }} </h2>
             @endif
+            <h2 class="user-name">{{ Auth::user()->name }} </h2>
         </div>
         <div>
             <a class="profile-link" href="/mypage/profile">プロフィールを編集</a>

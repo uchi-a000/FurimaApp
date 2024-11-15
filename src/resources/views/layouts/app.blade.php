@@ -34,7 +34,7 @@
                     @csrf
                     <button type="submit" class="header-nav-item__btn">ログアウト</button>
                 </form>
-                <li class="header-nav-item"><a href="/mypage">マイページ</a></li>
+                <li class="header-nav-item"><a href="/mypage/purchase">マイページ</a></li>
             </ul>
             @endif
         </nav>

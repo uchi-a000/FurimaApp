@@ -29,7 +29,8 @@
         </div>
         @endforeach
         @else
-        <p class="favorites-shop__not">お気に入りはありません</p>
+        <p class="favorites-shop__not">マイリストはありません</p>
         @endif
     </div>
-    @endsection
+</div>
+@endsection

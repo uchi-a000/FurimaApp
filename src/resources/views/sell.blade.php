@@ -26,7 +26,7 @@
 
                 <div class="file-upload__btn">
                     <label for="file-upload" class="custom-file-upload">画像を選択する</label>
-                    <input id="file-upload" class="file" type="file" name="item_img_1" style="display: none;" onchange="previewAndUploadImage(event)" />
+                    <input id="file-upload" class="file" type="file" name="item_img" style="display: none;" onchange="previewAndUploadImage(event)" />
                 </div>
             </div>
 
@@ -91,7 +91,7 @@
             reader.readAsDataURL(file);
 
             const formData = new FormData();
-            formData.append('item_img_1', file);
+            formData.append('item_img', file);
         }
     }
 </script>

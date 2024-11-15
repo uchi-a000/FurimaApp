@@ -24,8 +24,8 @@ class SellController extends Controller
     public function store(Request $request)
     {
 
-        if ($request->hasFile('item_img_1')) {
-            $item_img_1 = $request->file('item_img_1')->store('images', 'public');
+        if ($request->hasFile('item_img')) {
+            $item_img = $request->file('item_img')->store('images', 'public');
         }
 
         $item = Item::create([
@@ -34,7 +34,7 @@ class SellController extends Controller
             'item_name' => $request->item_name,
             'price' => $request->price,
             'description' => $request->description,
-            'item_img_1' => $item_img_1,
+            'item_img' => $item_img,
         ]);
 
         $item->categories()->attach($request->category_item_ids);

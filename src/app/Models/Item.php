@@ -15,10 +15,7 @@ class Item extends Model
         'item_name',
         'price',
         'description',
-        'item_img_1',
-        'item_img_2',
-        'item_img_3'
-
+        'item_img'
     ];
 
     public function user()

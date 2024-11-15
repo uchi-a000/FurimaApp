@@ -5,25 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Profile;
+use App\Models\SoldItem;
 use Illuminate\Support\Facades\Auth;
 
 
 class MypageController extends Controller
 {
-    public function myPage()
+    public function myPagePurchase()
     {
-
         $user = Auth::user();
-
         $items = Item::where('user_id', $user->id)->get();
         $profile = Profile::where('user_id', $user->id)->first();
 
-        return view('my_page', compact('items', 'profile'));
+        return view('my_page_purchase', compact('items', 'profile'));
     }
+
+    public function myPageSell()
+    {
+        $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id)->first();
+        $sold_items = SoldItem::where('user_id', $user->id)->with('item')->get();
+
+        return view('my_page_sell', compact('profile', 'sold_items'));
+    }
+
 
     public function profile()
     {
-
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
 

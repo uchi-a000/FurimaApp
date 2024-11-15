@@ -42,7 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/comment', [HomeController::class, 'store']);
     Route::get('/my_list', [HomeController::class, 'myList'])->name('my_list');
 
-    Route::get('/mypage', [MypageController::class, 'myPage'])->name('my_page');
+    Route::get('/mypage/purchase', [MypageController::class, 'myPagePurchase'])->name('my_page_purchase');
+    Route::get('/mypage/sell', [MypageController::class, 'myPageSell'])->name('my_page_sell');
     Route::get('/mypage/profile', [MypageController::class, 'profile'])->name('profile');
     Route::post('/mypage/profile', [MypageController::class, 'store']) ->name('profile_store');
     Route::patch('/mypage/update', [MypageController::class, 'update'])->name('profile_update');

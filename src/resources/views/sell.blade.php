@@ -6,30 +6,26 @@
 @endsection
 
 @section('content')
+<div class="alert">
+    @if(session('message'))
+    <div class="alert--success">
+        {{ session('message') }}
+    </div>
+    @endif
+</div>
 <div class="sell__container">
     <div class="sell__inner">
-        <div class="sell__alert">
-            @if(session('message'))
-            <div class="sell__alert--success">
-                {{ session('message') }}
-            </div>
-            @endif
-        </div>
         <h2 class="heading__ttl">商品の出品</h2>
         <form class="sell__form" action="/sell" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="sell__content__img">
-                <div class="item__ttl">商品画像</div>
-                <div class="img-preview__item ">
-                    <img id="img-preview" class="img-preview" src="" alt="プレビュー画像" style="display: none;">
-                </div>
-
-                <div class="file-upload__btn">
-                    <label for="file-upload" class="custom-file-upload">画像を選択する</label>
+                <h2 class="item__ttl">商品画像</h2>
+                <label for="file-upload" class="upload-area" id="upload-area">
+                    <div class="custom-file-upload">画像を選択する</div>
                     <input id="file-upload" class="file" type="file" name="item_img" style="display: none;" onchange="previewAndUploadImage(event)" />
-                </div>
+                </label>
             </div>
-
+            <div id="img-preview" class="img-preview"></div>
             <div class="sell__content">
                 <h3 class="content__ttl">商品の詳細</h3>
                 <div class="content__item">
@@ -77,21 +73,56 @@
 </div>
 @endsection
 
+
+
+
 <script>
     function previewAndUploadImage(event) {
-        const file = event.target.files[0];
-        const preview = document.getElementById('img-preview');
+        const file = event.target.files[0]; // 1枚目のみ取得
+        const previewContainer = document.getElementById('img-preview');
+
+        // 既存のプレビューをクリア
+        previewContainer.innerHTML = "";
 
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.style.display = "block";
-            };
-            reader.readAsDataURL(file);
+                // プレビュー画像を生成
+                const imgElement = document.createElement('img');
+                imgElement.src = e.target.result;
+                imgElement.style.width = '100px';
+                imgElement.style.height = '100px';
+                imgElement.style.objectFit = 'cover';
+                imgElement.style.margin = '20px 0';
 
-            const formData = new FormData();
-            formData.append('item_img', file);
+                // 削除ボタンを生成
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = '×';
+                deleteBtn.style.position = 'absolute';
+                deleteBtn.style.top = '5px';
+                deleteBtn.style.right = '5px';
+                deleteBtn.style.backgroundColor = 'red';
+                deleteBtn.style.color = 'white';
+                deleteBtn.style.border = 'none';
+                deleteBtn.style.cursor = 'pointer';
+                deleteBtn.style.borderRadius = '50%';
+                deleteBtn.style.width = '20px';
+                deleteBtn.style.height = '20px';
+                deleteBtn.style.fontSize = '12px';
+                deleteBtn.style.margin = '20px 0';
+
+                // 削除ボタンのクリックイベント
+                deleteBtn.addEventListener('click', function() {
+                    previewContainer.innerHTML = ""; // プレビューをクリア
+                    document.getElementById('file-upload').value = ""; // ファイル入力をリセット
+                });
+
+                // プレビューエリアに画像と削除ボタンを追加
+                previewContainer.style.marginTop = "10px";
+                previewContainer.appendChild(imgElement);
+                previewContainer.appendChild(deleteBtn);
+            };
+            reader.readAsDataURL(file); // 画像をデータURLとして読み込む
         }
     }
 </script>

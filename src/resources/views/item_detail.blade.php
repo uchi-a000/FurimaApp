@@ -17,7 +17,7 @@
 
         <div class="item-info">
             <h2>{{ $item->item_name }}</h2>
-            <div class="price"> &yen; {{ $item->price }} （値段）</div>
+            <div class="price"> &yen; {{ number_format($item->price) }} （値段）</div>
             <div class="favorites-comments__content">
                 <div class="favorites">
                     @if(Auth::check() && Auth::user()->favorites->contains('id', $item->id))

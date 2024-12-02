@@ -1,0 +1,63 @@
+.payment_method__container {
+    display: flex;
+    justify-content: center;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.back__link {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 35px;
+    height: 30px;
+    background-color: #fff;
+    color: black;
+    text-decoration: none;
+    box-shadow: 3px 3px 6px #0f030375;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+.ttl {
+    text-align: center;
+    margin: 20px;
+}
+
+.form__group {
+    margin-bottom: 32px;
+}
+
+.payment__select {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.payment__select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form__btn {
+    width: 100%;
+    border: 1px solid #FF5655;
+    padding: 10px;
+    background-color: #FF5655;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}

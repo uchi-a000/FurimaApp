@@ -45,11 +45,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/purchase', [MypageController::class, 'myPagePurchase'])->name('my_page_purchase');
     Route::get('/mypage/sell', [MypageController::class, 'myPageSell'])->name('my_page_sell');
     Route::get('/mypage/profile', [MypageController::class, 'profile'])->name('profile');
-    Route::post('/mypage/profile', [MypageController::class, 'store']) ->name('profile_store');
+    Route::post('/mypage/profile', [MypageController::class, 'store'])->name('profile_store');
     Route::patch('/mypage/update', [MypageController::class, 'update'])->name('profile_update');
 
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');
     Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase_store');
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'show'])->name('purchase_address');
+    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'addressShow'])->name('purchase_address');
     Route::patch('/purchase/address/update', [PurchaseController::class, 'addressUpdate'])->name('address_update');
+    Route::get('/purchase/payment/{item_id}', [PurchaseController::class, 'paymentMethodShow'])->name('purchase_payment_method');
+    Route::post('/purchase/payment/update', [PurchaseController::class, 'paymentMethodUpdate'])->name('payment_method_update');
 });

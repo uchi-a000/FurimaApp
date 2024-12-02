@@ -15,8 +15,8 @@
             @endif
         </div>
         <div class="item-comment__content">
-            <h1>{{ $item->name }}</h1>
-            <div class="price"> &yen; {{ $item->price }} （値段）</div>
+            <h1>{{ $item->item_name }}</h1>
+            <div class="price"> &yen; {{ $item->price }}</div>
             <div class="favorites-comments__item">
                 <div class="favorites">
                     @if(Auth::check() && Auth::user()->favorites->contains('id', $item->id))

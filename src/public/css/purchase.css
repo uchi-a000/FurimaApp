@@ -8,14 +8,29 @@
     display: flex;
 }
 
-.img {
+.item__img img {
     width: 80%;
     height: 200px;
 }
 
 
-.link {
+
+.change-unit__item {
+    margin: 50px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.link-1{
     color: blue;
+    padding-left: 260px;
+    font-weight: normal;
+}
+
+.link-2 {
+    padding-left: 300px;
+    color: blue;
+    font-weight: normal;
 }
 
 

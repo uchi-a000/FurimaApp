@@ -5,15 +5,19 @@
 @endsection
 
 @section('content')
-<div class="profile__container">
-    <div class="profile__alert">
-        @if(session('message'))
-        <div class="profile__alert--success">
-            {{ session('message') }}
-        </div>
-        @endif
+<div class="alert">
+    @if(session('message'))
+    <div class="alert--success">
+        {{ session('message') }}
     </div>
-    <h1 class="profile__ttl">住所の変更</h1>
+    @endif
+</div>
+<div class="purchase_address__container">
+    <div class="heading">
+        <a class="back__link" href="{{ url()->previous() }}">&lt;</a>
+        <!-- {{ url()->previous() }} はユーザーが直前にいたページに戻れる -->
+        <h1 class="ttl">住所の変更</h1>
+    </div>
     <div class="content">
         <form class="form" action="{{ route('address_update', $profile->id) }}" method="POST">
             @method('PATCH')

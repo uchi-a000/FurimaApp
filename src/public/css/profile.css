@@ -1,3 +1,10 @@
+.profile__alert--success {
+    padding: 10px 30px;
+    border-color: #badbcc;
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
 
 .profile__ttl {
     text-align: center;
@@ -43,7 +50,8 @@
     font-weight: bold;
 }
 
-.form__input{
+.form__input,
+.payment__select {
     display: block;
     padding: 8px 12px;
     width: 35em;

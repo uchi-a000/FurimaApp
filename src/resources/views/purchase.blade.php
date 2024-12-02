@@ -23,13 +23,17 @@
                 @endif
             </div>
             <div class="item-info">
-                <h2>{{ $item->name }}</h2>
-                <div class="price"> &yen; {{ $item->price }} （値段）</div>
+                <h2>{{ $item->item_name }}</h2>
+                <div class="price"> &yen; {{ number_format($item->price)}}</div>
             </div>
         </div>
-        <div class="payment__unit">
-            <div class="payment-method">支払い方法<a class="link" href="">変更する</a></div>
-            <div class="address">配送先<a class="link" href="{{route('purchase_address', $item->id) }}">変更する</a></div>
+        <div class="change-unit">
+            <div class="change-unit__item">支払い方法
+                <a class="link-1" href="{{route('purchase_payment_method', $item->id) }}">変更する</a>
+            </div>
+            <div class="change-unit__item">配送先
+                <a class="link-2" href="{{route('purchase_address', $item->id) }}">変更する</a>
+            </div>
         </div>
     </div>
 
@@ -37,15 +41,15 @@
         <table class="confirm__table">
             <tr class="confirm__row">
                 <th class="confirm__label">商品代金</th>
-                <td class="confirm__data"> &yen; {{ $item->price }}</td>
+                <td class="confirm__data"> &yen; {{ number_format($item->price) }}</td>
             </tr>
             <tr class="confirm__row">
                 <th class="confirm__label">支払い金額</th>
-                <td class="confirm__data"> &yen; {{ $item->price }}</td>
+                <td class="confirm__data"> &yen; {{ number_format($item->price) }}</td>
             </tr>
             <tr class="confirm__row">
                 <th class="confirm__label">支払い方法</th>
-                <td class="confirm__data">コンビニ払い</td>
+                <td class="confirm__data">{{ $payment->payment }}</td>
             </tr>
         </table>
         <form action="/purchase" method="POST">

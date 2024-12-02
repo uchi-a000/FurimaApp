@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Payment;
 use App\Models\Profile;
 use App\Models\SoldItem;
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +35,9 @@ class MypageController extends Controller
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
+        $payments = Payment::all();
 
-        return view('profile', compact('profile'));
+        return view('profile', compact('profile', 'payments'));
     }
 
     public function store(Request $request)
@@ -47,6 +49,7 @@ class MypageController extends Controller
         Profile::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
+            'payment_id' => $request->payment_id,
             'postcode' => $request->postcode,
             'address' => $request->address,
             'building' => $request->building,
@@ -72,7 +75,9 @@ class MypageController extends Controller
             $profile->img = $img_name;
         }
 
-        $profile_data = $request->only(['name', 'postcode', 'address', 'building']);
+        Payment::where('payment', $request->payment)->first();
+
+        $profile_data = $request->only(['payment_id', 'name', 'postcode', 'address', 'building']);
         $profile->update($profile_data);
 
         return redirect()->route('profile')->with('message', 'プロフィールを変更しました');

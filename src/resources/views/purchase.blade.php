@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-<div class="purchase__container">
-    <div class="profile__alert">
-        @if(session('message'))
-        <div class="profile__alert--success">
-            {{ session('message') }}
-        </div>
-        @endif
+<div class="alert">
+    @if(session('message'))
+    <div class="alert--success">
+        {{ session('message') }}
     </div>
+    @endif
+</div>
+<div class="purchase__container">
     <div class="item__content">
         <div class="item__unit">
             <div class="item__img">

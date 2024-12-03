@@ -1,0 +1,40 @@
+.payment {
+    text-align: center;
+}
+
+.amount {
+    font-size: 30px;
+    margin: 50px;
+}
+
+.item_name {
+    font-size: 20px;
+    margin: 50px;
+}
+
+.number {
+    padding: 5px 10px;
+}
+
+.submit {
+    border: 1px solid #5E7FEF;
+    background-color: #5E7FEF;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 16px;
+    padding: 10px 45px;
+    text-align: center;
+}
+
+.back_btn {
+    padding: 15px 60px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #9496a1;
+    color: #FFF;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}

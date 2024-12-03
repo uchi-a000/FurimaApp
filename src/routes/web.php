@@ -54,4 +54,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/purchase/address/update', [PurchaseController::class, 'addressUpdate'])->name('address_update');
     Route::get('/purchase/payment/{item_id}', [PurchaseController::class, 'paymentMethodShow'])->name('purchase_payment_method');
     Route::post('/purchase/payment/update', [PurchaseController::class, 'paymentMethodUpdate'])->name('payment_method_update');
+
+    // stripe決済
+    Route::get('/payment/{id}', [PurchaseController::class, 'showPayment'])->name('stripe.payment_form');
+    Route::post('/checkout', [PurchaseController::class, 'checkout'])->name('checkout');
+    Route::get('/payment/success/{id}', function ($id) {
+        return view('stripe.success');
+    })->name('stripe.success');
+    Route::get('/payment/cancel/{id}', function ($id) {
+        return view('stripe.cancel');
+    })->name('stripe.cancel');
 });

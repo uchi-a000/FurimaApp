@@ -52,11 +52,17 @@
                 <td class="confirm__data">{{ $payment->payment }}</td>
             </tr>
         </table>
-        <form action="/purchase" method="POST">
-            @csrf
-            <input type="hidden" name="item_id" value="{{ $item->id }}">
-            <button class="btn">購入する</button>
-        </form>
+        <div>
+            @if($payment->id == 3)
+            <a class="stripe__link" href="/payment/{{ $item->id }}">購入する</a>
+            @else
+            <form action="/purchase" method="POST">
+                @csrf
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
+                <button class="btn">購入する</button>
+            </form>
+            @endif
+        </div>
     </div>
 </div>
 @endsection

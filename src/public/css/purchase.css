@@ -49,5 +49,20 @@
     padding-right: 100px;
 }
 
+.stripe__link {
+    display: inline-block;
+    width: 95%;
+    border: 1px solid #FF5655;
+    padding: 10px;
+    background-color: #FF5655;
+    color: #fff;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
 
 

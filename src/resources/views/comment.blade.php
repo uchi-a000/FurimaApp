@@ -61,6 +61,15 @@
                 <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
                 <div class="user-name">{{ $comment->user->name }} </div>
                 @endif
+                @if(Auth::check() && Auth::user()->hasRole('admin'))
+                <div class="user-destroy">
+                    <form action="{{ route('admin.comments_destroy', $comment->id) }}" method="POST" onclick="return confirm('本当に削除しますか？')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete_btn">削除する</button>
+                    </form>
+                </div>
+                @endif
             </div>
             <div class="comment-box">{{ $comment->comment }}</div>
             @endforeach

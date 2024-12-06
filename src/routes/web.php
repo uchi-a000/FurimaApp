@@ -8,6 +8,7 @@ use App\Http\Controllers\SellController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,4 +65,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment/cancel/{id}', function ($id) {
         return view('stripe.cancel');
     })->name('stripe.cancel');
+});
+
+
+//管理者
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/users', [AdminController::class, 'adminIndex'])->name('admin.admin_index');
+    Route::delete('/users/delete/{user}', [AdminController::class, 'userDestroy'])->name('admin.users_destroy');
+    Route::delete('/comments/delete/{comment}', [AdminController::class, 'commentDestroy'])->name('admin.comments_destroy');
 });

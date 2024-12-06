@@ -35,6 +35,10 @@
                     <button type="submit" class="header-nav-item__btn">ログアウト</button>
                 </form>
                 <li class="header-nav-item"><a href="/mypage/purchase">マイページ</a></li>
+                <!-- 管理者メニュー -->
+                @if(Auth::user()->hasRole('admin'))
+                <li class="header-nav-item"><a href="/admin/users">ユーザー一覧</a></li>
+                @endif
             </ul>
             @endif
         </nav>

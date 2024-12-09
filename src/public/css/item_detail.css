@@ -33,6 +33,10 @@
     border-radius: 5px;
 }
 
+.purchase_link-text {
+    font-size: 15px;
+}
+
 .description {
     white-space: pre-wrap; /*改行も空白も保存できる*/
 }
@@ -64,9 +68,6 @@
     background-color: #ddd;
 }
 
-.condition__item {
-   
-}
 
 .favorites-comments__content {
     display: flex;

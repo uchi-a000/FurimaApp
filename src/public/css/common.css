@@ -87,3 +87,8 @@ a {
     color: #0f5132;
     text-align: center;
 }
+
+.form__error {
+    color: red;
+    text-align: center;
+}

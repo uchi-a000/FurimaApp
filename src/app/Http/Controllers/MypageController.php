@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\Profile;
 use App\Models\SoldItem;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
 
 
 class MypageController extends Controller
@@ -40,7 +41,7 @@ class MypageController extends Controller
         return view('profile', compact('profile', 'payments'));
     }
 
-    public function store(Request $request)
+    public function store(ProfileRequest $request)
     {
         if ($request->hasFile('img')) {
             $img = $request->file('img')->store('profile', 'public');
@@ -48,7 +49,7 @@ class MypageController extends Controller
 
         Profile::create([
             'user_id' => auth()->id(),
-            'name' => $request->name,
+            'real_name' => $request->real_name,
             'payment_id' => $request->payment_id,
             'postcode' => $request->postcode,
             'address' => $request->address,
@@ -60,7 +61,7 @@ class MypageController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
 
         if ($request->has('back')) {

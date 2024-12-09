@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
 
         foreach ($uniqueEmails as $index => $email) {
             User::create([
-                'name' => $uniqueNames[$index],
+                'nick_name' => $uniqueNames[$index],
                 'email' => $email,
                 'password' => Hash::make('pppp0000')
             ]);

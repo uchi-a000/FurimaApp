@@ -53,7 +53,13 @@
                 </div>
             </div>
 
+            @if(Auth::check() && !$profile)
+            <a class="purchase_link" href="/mypage/profile">購入手続きへ<br>
+                <span class="purchase_link-text">(先にプロフィール設定が必要です)</span>
+            </a>
+            @else
             <a class="purchase_link" href="{{ route('purchase', $item->id) }}">購入手続きへ</a>
+            @endif
             <h3>商品説明</h3>
             <div class="description">{{ $item->description }}</div>
             <h3>商品の情報</h3>

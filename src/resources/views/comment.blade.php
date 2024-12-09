@@ -56,10 +56,10 @@
                 <!-- ログインユーザーとコメントしようとしているユーザーが同じなら true→'self-comment' css適用-->
                 @if($comment->user->profile)
                 <img class="img-preview" src="{{ Storage::url('profile/' . $comment->user->profile->img) }}" alt="ストレージ画像">
-                <div class="user-name">{{ $comment->user->name }} </div>
+                <div class="user-name">{{ $comment->user->nick_name }} </div>
                 @else
                 <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
-                <div class="user-name">{{ $comment->user->name }} </div>
+                <div class="user-name">{{ $comment->user->nick_name }} </div>
                 @endif
                 @if(Auth::check() && Auth::user()->hasRole('admin'))
                 <div class="user-destroy">
@@ -78,6 +78,11 @@
                 <input type="hidden" name="item_id" value="{{ $item->id }}">
                 <div class="comment-form-item">
                     <p class="comment-form-item__label">商品へのコメント</p>
+                    <div class="form__error">
+                        @error('comment')
+                        {{ $message }}
+                        @enderror
+                    </div>
                     <textarea class="comment-form-item__textarea" name="comment" id="comment">{{ old('comment') }}</textarea>
                     <div class="form__btn">
                         <button class="btn" type="submit">コメントを送信する</button>

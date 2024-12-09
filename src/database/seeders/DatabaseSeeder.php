@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $admin_role->givePermissionTo($manage_user_permission, $manage_comment_permission);
 
         $admin_user = User::create([
-            'name' => '管理者',
+            'nick_name' => '管理者',
             'email' => 'admin@example.com',
             'password' => bcrypt('pppp0000'),
             'email_verified_at' => now()

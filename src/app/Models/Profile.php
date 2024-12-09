@@ -12,7 +12,7 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
         'payment_id',
-        'name',
+        'real_name',
         'postcode',
         'address',
         'building',

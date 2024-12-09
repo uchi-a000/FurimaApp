@@ -25,24 +25,24 @@
             </div>
             <div class="form__group">
                 <div class="form__label">ニックネーム</div>
-                <input class="form__input" type="text" name="name" value="{{ Auth::user()->name }}" />
+                <input class="form__input" type="text" name="name" value="{{ Auth::user()->nick_name }}" />
                 <div class="form__error">
-                    @error('name')
+                    @error('nick_name')
                     {{ $message }}
                     @enderror
                 </div>
             </div>
             <div class="form__group">
                 <div class="form__label">名前</div>
-                <input class="form__input" type="text" name="name" value="{{ old('name') }}" />
+                <input class="form__input" type="text" name="name" value="{{ old('real_name') }}" />
                 <div class="form__error">
-                    @error('name')
+                    @error('real_name')
                     {{ $message }}
                     @enderror
                 </div>
             </div>
             <div class="form__group">
-                <div class="form__label">郵便番号</div>
+                <div class="form__label">郵便番号（ハイフンなし）</div>
                 <input class="form__input" type="text" name="postcode" id="postcode" value="{{ old('postcode') }}">
                 <div class="form__error">
                     @error('postcode')
@@ -72,6 +72,11 @@
                     </option>
                     @endforeach
                 </select>
+                <div class="form__error">
+                    @error('payment_id')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__button">
                 <button class="btn">登録する</button>
@@ -93,24 +98,24 @@
             </div>
             <div class="form__group">
                 <div class="form__label">ニックネーム</div>
-                <input class="form__input" type="text" name="name" value="{{ Auth::user()->name }}" />
+                <input class="form__input" type="text" name="name" value="{{ Auth::user()->nick_name }}" />
                 <div class="form__error">
-                    @error('name')
+                    @error('nick_name')
                     {{ $message }}
                     @enderror
                 </div>
             </div>
             <div class="form__group">
                 <label class="form__label">名前</label>
-                <input class="form__input" type="text" name="name" value="{{ $profile->name }}" />
+                <input class="form__input" type="text" name="name" value="{{ $profile->real_name }}" />
                 <div class="form__error">
-                    @error('name')
+                    @error('real_name')
                     {{ $message }}
                     @enderror
                 </div>
             </div>
             <div class="form__group">
-                <div class="form__label">郵便番号</div>
+                <div class="form__label">郵便番号（ハイフンなし）</div>
                 <input class="form__input" type="text" name="postcode" id="postcode" value="{{ $profile->postcode }}">
                 <div class="form__error">
                     @error('postcode')
@@ -144,6 +149,11 @@
                     @endif
                     @endforeach
                 </select>
+                <div class="form__error">
+                    @error('payment')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__button">
                 <button class="btn">更新する</button>

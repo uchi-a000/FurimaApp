@@ -14,7 +14,7 @@
                 <div class="group__ttl"><span>ニックネーム</span></div>
                 <input class="group__input" type="name" name="name" value="{{ old('name') }}" />
                 <div class="form__error">
-                    @error('name')
+                    @error('nick_name')
                     {{ $message }}
                     @enderror
                 </div>

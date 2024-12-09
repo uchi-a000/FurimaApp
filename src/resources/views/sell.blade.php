@@ -18,14 +18,19 @@
         <h2 class="heading__ttl">商品の出品</h2>
         <form class="sell__form" action="/sell" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="item__ttl">商品画像</div>
             <div class="sell__content__img">
-                <h2 class="item__ttl">商品画像</h2>
                 <label for="file-upload" class="upload-area" id="upload-area">
                     <div class="custom-file-upload">画像を選択する</div>
                     <input id="file-upload" class="file" type="file" name="item_img" style="display: none;" onchange="previewAndUploadImage(event)" />
                 </label>
             </div>
             <div id="img-preview" class="img-preview"></div>
+            <div class="form__error">
+                @error('item_img')
+                {{ $message }}
+                @enderror
+            </div>
             <div class="sell__content">
                 <h3 class="content__ttl">商品の詳細</h3>
                 <div class="content__item">
@@ -33,10 +38,15 @@
                     <select class="category__select" name="category_item_ids[]" id="category_item_select" multiple>
                         <option disabled selected>以下より選択してください</option>
                         @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ in_array('category_id', old('category_item_ids', [])) ? 'selected' : '' }}>{{$category->name }}
+                        <option value="{{ $category->id }}" {{ in_array( $category->id, old('category_item_ids', [])) ? 'selected' : '' }}>{{$category->name }}
                         </option>
                         @endforeach
                     </select>
+                    <div class="form__error">
+                        @error('category_item_ids')
+                        {{ $message }}
+                        @enderror
+                    </div>
                     <div class="item__ttl">商品の状態</div>
                     <select class="condition__select" name="condition_id" id="condition_select">
                         <option disabled selected>選択してください</option>
@@ -45,6 +55,11 @@
                         </option>
                         @endforeach
                     </select>
+                    <div class="form__error">
+                        @error('condition_id')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="sell__content">
@@ -52,6 +67,11 @@
                 <div class="content__item">
                     <div class="item__ttl">商品名</div>
                     <input class="item-name__input" type="text" name="item_name" value="{{ old('item_name') }}" />
+                    <div class="form__error">
+                        @error('item_name')
+                        {{ $message }}
+                        @enderror
+                    </div>
 
                     <div class="item__ttl">商品説明</div>
                     <textarea class="item__textarea" name="description">{{ old('description') }}</textarea>
@@ -63,6 +83,11 @@
                     <div class="item__ttl">販売価格</div>
                     <span class="price__icon">&yen;</span>
                     <input class="price__input" type="text" name="price" value=" {{ old('price') }}" />
+                    <div class="form__error">
+                        @error('price')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="sell-form__btn">

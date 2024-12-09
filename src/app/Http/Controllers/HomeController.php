@@ -8,7 +8,7 @@ use App\Models\CategoryItem;
 use App\Models\Comment;
 use App\Models\Item;
 use App\Models\Favorite;
-
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -50,8 +50,9 @@ class HomeController extends Controller
 
         $item = Item::with('condition')->find($id);
         $category_items = CategoryItem::where('item_id', $item->id)->with('category')->get();
+        $profile = auth()->check() ? auth()->user()->profile : null;
 
-        return view('item_detail', compact('item', 'category_items'));
+        return view('item_detail', compact('item', 'category_items', 'profile'));
     }
 
     public function comment($id)
@@ -65,7 +66,7 @@ class HomeController extends Controller
         return view('comment', compact('item', 'comments'));
     }
 
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
 
         Item::find($request->item_id);

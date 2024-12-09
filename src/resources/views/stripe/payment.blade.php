@@ -18,7 +18,7 @@
             {{ $message }}
             @enderror
         </div>
-        <div class="amount">金額: {{ $item->price }} </div>
+        <div class="amount">金額: &yen; {{ number_format($item->price) }} </div>
         <div class="item_name">商品名: {{ $item->item_name }} </div>
         <div>
             <button class="submit" type="submit">Stripe決済</button>

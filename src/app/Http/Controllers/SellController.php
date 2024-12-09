@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\Condition;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SellRequest;
+
 
 class SellController extends Controller
 {
 
-    public function sell(Request $request)
+    public function sell()
     {
         $user = Auth::user();
         $items = Item::where('user_id', $user->id)->get();
@@ -21,7 +22,7 @@ class SellController extends Controller
         return view('sell', compact('items', 'categories', 'conditions'));
     }
 
-    public function store(Request $request)
+    public function store(SellRequest $request)
     {
 
         if ($request->hasFile('item_img')) {

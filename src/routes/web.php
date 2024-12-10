@@ -9,6 +9,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminNotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,4 +74,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::get('/users', [AdminController::class, 'adminIndex'])->name('admin.admin_index');
     Route::delete('/users/delete/{user}', [AdminController::class, 'userDestroy'])->name('admin.users_destroy');
     Route::delete('/comments/delete/{comment}', [AdminController::class, 'commentDestroy'])->name('admin.comments_destroy');
+
+    // お知らせメール
+    Route::get('/notify', [AdminNotificationController::class, 'showNotificationForm'])->name('admin.notify');
+    Route::post('/confirm', [AdminNotificationController::class, 'confirmNotification'])->name('admin.notify.confirm');
+    Route::post('/notify', [AdminNotificationController::class, 'sendNotification'])->name('admin.notify.send');
+    Route::get('/shops/import', [AdminController::class, 'showImport'])->name('admin.shops_import');
+    Route::post('/shops/import', [AdminController::class, 'import'])->name('admin.shops_import');
 });

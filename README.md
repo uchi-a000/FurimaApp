@@ -19,7 +19,7 @@ php・laravelを学習中で練習のために作成しました。
 プロフィール変更  
 商品お気に入り追加  
 商品お気に入り削除  
-商品コメント追加  
+商品コメント追加  n
 商品コメント削除  
 出品  
 商品検索  
@@ -50,7 +50,9 @@ php・laravelを学習中で練習のために作成しました。
 6.  php artisan migrate（マイグレーション）
 7.  php artisan db:seed（シーディング）
 8. メール認証  
-    .env ファイルと docker-compose.yml にテストメール（Mailtrap）内容記述
+    brew install mailhog (mailhogインストール)  
+    .env ファイルと docker-compose.yml にテストメール（mailhog）の内容記述  
+    docker-compose up --build -d  
 9. 管理画面  
     composer require spatie/laravel-permission（Spatie Laravel Permissionパッケージインストール）  
     php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"（設定ファイルを生成）  

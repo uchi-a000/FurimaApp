@@ -1,7 +1,26 @@
-.users__container {
+.admin-users__container {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
 }
+
+.admin-notify-nav {
+    text-align: right;
+}
+
+.admin-notify-nav__link {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(transparent 75%, #3F5FED 75%);
+}
+
+@media screen and (max-width: 768px) {
+    .admin-notify-nav {
+        text-align: center;
+    }
+}
+
 
 
 .users__table {

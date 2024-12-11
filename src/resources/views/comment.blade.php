@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+<div class="alert">
+    @if(session('success'))
+    <div class="alert--success">
+        {{ session('success') }}
+    </div>
+    @endif
+</div>
 <div class="comment__container">
     <div class="comment__inner">
         <div class="item-img__content">
@@ -61,9 +68,20 @@
                 <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
                 <div class="user-name">{{ $comment->user->nick_name }} </div>
                 @endif
+                <!-- 管理者用削除 -->
                 @if(Auth::check() && Auth::user()->hasRole('admin'))
                 <div class="user-destroy">
                     <form action="{{ route('admin.comments_destroy', $comment->id) }}" method="POST" onclick="return confirm('本当に削除しますか？')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete_btn">削除する</button>
+                    </form>
+                </div>
+                @endif
+                <!-- ユーザー用削除 -->
+                @if(Auth::check() && Auth::id() === $comment->user->id)
+                <div class="user-destroy">
+                    <form action="{{ route('comment_delete', $comment->id) }}" method="POST" onclick="return confirm('本当に削除しますか？')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="delete_btn">削除する</button>

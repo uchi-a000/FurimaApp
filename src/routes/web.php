@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::match(['post', 'delete'], '/favorites/{item}', [FavoriteController::class, 'toggleFavorite'])->name('favorites');
 
     Route::post('/comment', [HomeController::class, 'store']);
+    Route::delete('/comment/delete/{comment}', [HomeController::class, 'deleteComment'])->name('comment_delete');
+
     Route::get('/my_list', [HomeController::class, 'myList'])->name('my_list');
 
     Route::get('/mypage/purchase', [MypageController::class, 'myPagePurchase'])->name('my_page_purchase');

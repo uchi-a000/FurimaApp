@@ -79,4 +79,11 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteComment(Comment $comment)
+    {
+        $comment->delete();
+
+        return redirect()->route('comment', ['id' => $comment->id])->with('success', 'コメントを削除しました');
+    }
 }

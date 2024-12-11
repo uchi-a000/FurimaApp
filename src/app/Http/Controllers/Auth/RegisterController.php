@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
 
 
 
@@ -20,9 +21,10 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        event(new Registered($user));
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->route('verification.notice');
     }
 
     public function create()

@@ -1,0 +1,49 @@
+body {
+    background-color: #f2f2f2;
+    margin-top: 100px;
+}
+
+.content__head {
+    width: 30%;
+    height: 300px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 6px #0f030375;
+}
+
+.content__head--inner {
+    text-align: center;
+    padding: 20px;
+}
+
+.email--form__submit {
+    padding: 10px 10px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
+    color: #FFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.register--form__btn {
+    padding: 5px 15px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #8cbaee;
+    color: #FFF;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.alert {
+    text-align: center;
+    border-radius: 5px;
+    border-color: #badbcc;
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 3px 30px;
+}

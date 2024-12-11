@@ -36,7 +36,8 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'nick_name' => $uniqueNames[$index],
                 'email' => $email,
-                'password' => Hash::make('pppp0000')
+                'password' => Hash::make('pppp0000'),
+                'email_verified_at' => now()
             ]);
         }
     }

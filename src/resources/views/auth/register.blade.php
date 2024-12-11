@@ -12,7 +12,7 @@
             @csrf
             <div class="form__group">
                 <div class="group__ttl"><span>ニックネーム</span></div>
-                <input class="group__input" type="name" name="name" value="{{ old('name') }}" />
+                <input class="group__input" type="name" name="nick_name" value="{{ old('nick_name') }}" />
                 <div class="form__error">
                     @error('nick_name')
                     {{ $message }}

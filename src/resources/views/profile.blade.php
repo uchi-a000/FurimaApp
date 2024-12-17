@@ -22,10 +22,15 @@
                 <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>
                 <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewAndUploadImage(event)" />
+                <div class="form__error">
+                    @error('img')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__group">
                 <div class="form__label">ニックネーム</div>
-                <input class="form__input" type="text" name="name" value="{{ Auth::user()->nick_name }}" />
+                <input class="form__input" type="text" name="nick_name" value="{{ Auth::user()->nick_name }}" />
                 <div class="form__error">
                     @error('nick_name')
                     {{ $message }}
@@ -34,7 +39,7 @@
             </div>
             <div class="form__group">
                 <div class="form__label">名前</div>
-                <input class="form__input" type="text" name="name" value="{{ old('real_name') }}" />
+                <input class="form__input" type="text" name="real_name" value="{{ old('real_name') }}" />
                 <div class="form__error">
                     @error('real_name')
                     {{ $message }}
@@ -92,13 +97,18 @@
             @csrf
             <input type="hidden" name="id" value="{{ $profile->id }}">
             <div class="form__group">
-                <img id="img-preview" class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
+                <img id="img-preview" class="img-preview" src="{{ Storage::url('profile/' . $profile->img ) }}" alt="ストレージ画像">
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>
                 <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewAndUploadImage(event)" />
+                <div class="form__error">
+                    @error('img')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div class="form__group">
                 <div class="form__label">ニックネーム</div>
-                <input class="form__input" type="text" name="name" value="{{ Auth::user()->nick_name }}" />
+                <input class="form__input" type="text" name="nick_name" value="{{ Auth::user()->nick_name }}" />
                 <div class="form__error">
                     @error('nick_name')
                     {{ $message }}
@@ -107,7 +117,7 @@
             </div>
             <div class="form__group">
                 <label class="form__label">名前</label>
-                <input class="form__input" type="text" name="name" value="{{ $profile->real_name }}" />
+                <input class="form__input" type="text" name="real_name" value="{{ $profile->real_name }}" />
                 <div class="form__error">
                     @error('real_name')
                     {{ $message }}

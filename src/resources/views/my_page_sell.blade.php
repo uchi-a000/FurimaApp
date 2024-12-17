@@ -13,7 +13,7 @@
             @else
             <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
             @endif
-            <h2 class="user-name">{{ Auth::user()->name }} </h2>
+            <h2 class="user-name">{{ Auth::user()->nick_name }} </h2>
         </div>
         <div>
             <a class="profile-link" href="/mypage/profile">プロフィールを編集</a>

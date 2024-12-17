@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Payment;
 use App\Models\Profile;
@@ -43,9 +42,15 @@ class MypageController extends Controller
 
     public function store(ProfileRequest $request)
     {
-        if ($request->hasFile('img')) {
-            $img = $request->file('img')->store('profile', 'public');
-        }
+
+        $img_path = $request->file('img')->store('profile', 'public');
+        $img_name = basename($img_path);
+
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+        $user->update([
+            'nick_name' => $request->nick_name
+        ]);
 
         Profile::create([
             'user_id' => auth()->id(),
@@ -54,8 +59,9 @@ class MypageController extends Controller
             'postcode' => $request->postcode,
             'address' => $request->address,
             'building' => $request->building,
-            'img' => $img
+            'img' => $img_name
         ]);
+
 
         return redirect()->back()->with('message', 'プロフィールを設定しました');
 
@@ -70,7 +76,7 @@ class MypageController extends Controller
 
         $profile = Profile::find($request->id);
 
-        if ($request->hasFile('img')) {
+        if($request->hasFile('img')) {
             $img_path = $request->file('img')->store('profile', 'public');
             $img_name = basename($img_path);
             $profile->img = $img_name;
@@ -78,8 +84,15 @@ class MypageController extends Controller
 
         Payment::where('payment', $request->payment)->first();
 
-        $profile_data = $request->only(['payment_id', 'name', 'postcode', 'address', 'building']);
+        $profile_data = $request->only(['payment_id', 'real_name', 'postcode', 'address', 'building']);
         $profile->update($profile_data);
+
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+        $user->update([
+            'nick_name' => $request->nick_name
+        ]);
+
 
         return redirect()->route('profile')->with('message', 'プロフィールを変更しました');
     }

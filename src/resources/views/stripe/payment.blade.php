@@ -22,7 +22,7 @@
         <div class="item_name">商品名: {{ $item->item_name }} </div>
         <div>
             <button class="submit" type="submit">Stripe決済</button>
-            <a class="back_btn" href="">戻る</a>
+            <a class="back_btn" href="{{ route('purchase', ['item_id' => $item->id]) }}">戻る</a>
         </div>
     </form>
 </div>

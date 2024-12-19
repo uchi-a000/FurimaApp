@@ -14,8 +14,7 @@
 </div>
 <div class="purchase_address__container">
     <div class="heading">
-        <a class="back__link" href="{{ url()->previous() }}">&lt;</a>
-        <!-- {{ url()->previous() }} はユーザーが直前にいたページに戻れる -->
+        <a class="back__link" href="{{ route('purchase', ['item_id' => $item->id]) }}">&lt;</a>
         <h1 class="ttl">住所の変更</h1>
     </div>
     <div class="content">

@@ -35,12 +35,13 @@ class PurchaseController extends Controller
         return redirect()->back()->with('message', '購入しました');
     }
 
-    public function addressShow()
+    public function addressShow($id)
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
+        $item = Item::find($id);
 
-        return view('purchase_address', compact('profile'));
+        return view('purchase_address', compact('profile', 'item'));
     }
 
     public function addressUpdate(Request $request)
@@ -55,13 +56,14 @@ class PurchaseController extends Controller
     }
 
 
-    public function paymentMethodShow()
+    public function paymentMethodShow($id)
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
         $payments = Payment::all();
+        $item = Item::find($id);
 
-        return view('purchase_payment_method', compact('profile', 'payments'));
+        return view('purchase_payment_method', compact('profile', 'payments', 'item'));
     }
 
 

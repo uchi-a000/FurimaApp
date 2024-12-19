@@ -15,8 +15,7 @@
 <div class="payment_method__container">
     <div class="inner">
         <div class="heading">
-            <a class="back__link" href="{{ url()->previous() }}">&lt;</a>
-            <!-- {{ url()->previous() }} はユーザーが直前にいたページに戻れる -->
+            <a class="back__link" href="{{ route('purchase', ['item_id' => $item->id]) }}">&lt;</a>
             <h1 class="ttl">お支払い方法変更</h1>
         </div>
         <form class="form" action="{{ route('payment_method_update', $profile->id) }}" method="POST">

@@ -33,11 +33,15 @@ php・laravelを学習中で練習のために作成しました。
 
 
 ## テーブル設計
+<img width="634" alt="スクリーンショット 2024-12-19 20 33 13" src="https://github.com/user-attachments/assets/87d25a88-af03-4342-a983-86cf0c28e042" />
+<img width="634" alt="スクリーンショット 2024-12-19 20 33 31" src="https://github.com/user-attachments/assets/9cf3c7e2-0d75-43ee-be4f-95b2c03c86e3" />
+<img width="635" alt="スクリーンショット 2024-12-19 20 33 43" src="https://github.com/user-attachments/assets/c5341459-73a9-4696-a295-bf3cf4cf1334" />
+<img width="634" alt="スクリーンショット 2024-12-19 20 33 56" src="https://github.com/user-attachments/assets/d1ccbd60-3948-49df-a3fc-70cc8dff005e" />
+
 
 
 ## ER 図
-
-
+<img width="1207" alt="スクリーンショット 2024-12-19 20 28 44" src="https://github.com/user-attachments/assets/074f2ec4-f29a-4126-888c-19c933f5f0c4" />
 
 
 
@@ -76,6 +80,7 @@ php・laravelを学習中で練習のために作成しました。
 ・【管理画面】管理者と利用者の2つの権限を作成  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理者は一般ユーザーのコメントを削除できる(コメントページで削除可能)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理者側はユーザーの削除が行える（ヘッダーのユーザー一覧で削除可能）  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ユーザーは自分のコメントのみ削除が行える  
 ・【ストレージ】お店の画像をストレージに保存することができる  
 ・【認証】メールによって本人確認を行うことができる（管理者除く）  
 ・【メール送信】管理者からユーザーへお知らせメールを送信できる  

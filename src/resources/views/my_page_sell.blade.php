@@ -8,8 +8,8 @@
 <div class="mypage__container">
     <div class="heading">
         <div class="user-profile">
-            @if($profile)
-            <img class="img-preview" src="{{ Storage::url('profile/' . $profile['img']) }}" alt="ストレージ画像">
+            @if($profile->img)
+            <img id="img-preview" class="img-preview" src="{{ Storage::url('profile/' . $profile->img ) }}" alt="ストレージ画像">
             @else
             <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
             @endif

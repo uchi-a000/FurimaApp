@@ -28,7 +28,7 @@ class ProfileRequest extends FormRequest
             'real_name'       => ['required', 'string', 'max:225'],
             'postcode'        => ['required', 'regex:/^\d{7}$/'],
             'address'         => ['required'],
-            'img'             => ['required', 'image', 'mimes:jpeg,png', 'max:2048'],
+            'img'             => ['image', 'mimes:jpeg,png', 'max:2048'],
             'payment_id'      => ['required']
         ];
     }
@@ -43,7 +43,6 @@ class ProfileRequest extends FormRequest
             'postcode.required'   => '郵便番号は必須項目です',
             'postcode.regex'      => '郵便番号は半角数字７桁で入力してください',
             'address.required'    => '住所を入力してください',
-            'img.required'        => '出品画像をアップロードしてください',
             'img.image'           => '画像はjpegまたはpng形式のみアップロード可能です',
             'img.mimes'           => '画像はjpegまたはpng形式のみアップロード可能です',
             'img.max'             => '画像のサイズは2MB以内でなければなりません',

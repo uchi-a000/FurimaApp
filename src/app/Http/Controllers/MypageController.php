@@ -42,9 +42,13 @@ class MypageController extends Controller
 
     public function store(ProfileRequest $request)
     {
+        $img_name = null;
 
-        $img_path = $request->file('img')->store('profile', 'public');
-        $img_name = basename($img_path);
+        if($request->hasFile('img')){
+            $img_path = $request->file('img')->store('profile', 'public');
+            $img_name = basename($img_path);
+        }
+
 
         /** @var \App\Models\User $user */
         $user = auth()->user();

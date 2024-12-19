@@ -97,7 +97,11 @@
             @csrf
             <input type="hidden" name="id" value="{{ $profile->id }}">
             <div class="form__group">
+                @if($profile->img)
                 <img id="img-preview" class="img-preview" src="{{ Storage::url('profile/' . $profile->img ) }}" alt="ストレージ画像">
+                @else
+                <img id="img-preview" class="img-preview" src=" {{ asset('img/user.svg') }}" alt="プレビュー画像">
+                @endif
                 <label for="file-upload" class="custom-file-upload">画像を選択する</label>
                 <input id="file-upload" class="file" type="file" name="img" style="display: none;" onchange="previewAndUploadImage(event)" />
                 <div class="form__error">
